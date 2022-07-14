@@ -1,27 +1,21 @@
-
-const Hellow = ({name,age}) => {
-  const bornYear = () => {
-    return new Date().getFullYear() - age
-  }
-  // console.log(props)
-  return(
-  <div>
-    <p>
-      Hellow {name} you are {age} years old
-    </p>
-    <p>
-      so you were propably born in {bornYear()}
-    </p>
-  </div>)
-}
+import { useState } from "react"
+import Display  from "./components/Display"
+import Button from "./components/Button"
 const App = () => {
-  const name = 'Maher'
-  const age = 35
+  const [counter , setCounter] = useState (0) 
+
+  const increaseByOne = () => {setCounter(counter + 1)}
+  const setToZero = () => {setCounter(0)}
+  const decreaseByOne = () => {setCounter(counter - 1)}
+  
   return (
     <>
-      <h1>Greetings</h1>
-      <Hellow name = 'Noor' age = '28'/>
-      <Hellow name = {name} age = {age}/>
+      <Display counter = {counter}/>
+      <Button onClick={increaseByOne} text ={"plus"}/>
+      <br></br>
+      <Button onClick={decreaseByOne} text ={"minus"}/>
+      <br></br>
+      <Button onClick={setToZero} text ={"reset"}/>            
     </>
   )
 }
