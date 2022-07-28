@@ -1,21 +1,26 @@
 import { useState } from "react"
-import Display  from "./components/Display"
-import Button from "./components/Button"
-const App = () => {
-  const [counter , setCounter] = useState (0) 
 
-  const increaseByOne = () => {setCounter(counter + 1)}
-  const setToZero = () => {setCounter(0)}
-  const decreaseByOne = () => {setCounter(counter - 1)}
+const App = () => {
+  const [clicks , setClicks] = useState({left : 0, right : 0})
+  
+  const handleLeftClick = () => {
+    setClicks ({...clicks, left : clicks.left + 1})
+  }
+
+  const handleRightClick = () => {
+    setClicks ({...clicks , right : clicks.right +1})
+  }
   
   return (
     <>
-      <Display counter = {counter}/>
-      <Button onClick={increaseByOne} text ={"plus"}/>
-      <br></br>
-      <Button onClick={decreaseByOne} text ={"minus"}/>
-      <br></br>
-      <Button onClick={setToZero} text ={"reset"}/>            
+    {clicks.left}
+    <button onClick={handleLeftClick}>
+      left
+    </button>
+    <button onClick={handleRightClick}>
+      right
+    </button>
+    {clicks.right}
     </>
   )
 }
