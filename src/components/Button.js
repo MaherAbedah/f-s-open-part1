@@ -1,6 +1,6 @@
-const Button = ({text, onClick}) => {
+const Button = ({handleclick, text, cls}) => {
   return (
-    <button onClick={onClick}>
+    <button style={{margin : '5px'}} type="button" class={cls} onClick={handleclick}>
       {text}
     </button>
   )
